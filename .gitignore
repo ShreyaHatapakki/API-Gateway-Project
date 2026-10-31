@@ -1,0 +1,47 @@
+# Maven / Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+# IntelliJ / Eclipse / VS Code
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+out/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Environment and secrets (never commit)
+.env
+.env.local
+.env.*.local
+*.pem
+*.p12
+*.jks
+
+# Node (if added later)
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# Docker
+.docker/

@@ -1,0 +1,36 @@
+services:
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  user-service:
+    build: ./user-service
+    ports:
+      - "8081:8081"
+
+  product-service:
+    build: ./product-service
+    ports:
+      - "8082:8082"
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "8083:8083"
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      REDIS_HOST: redis
+      USER_SERVICE_URI: http://user-service:8081
+      PRODUCT_SERVICE_URI: http://product-service:8082
+      ORDER_SERVICE_URI: http://order-service:8083
+      JWT_SECRET: ${JWT_SECRET:-local-dev-only-not-for-production-xx}
+    depends_on:
+      - redis
+      - user-service
+      - product-service
+      - order-service
